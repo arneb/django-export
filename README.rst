@@ -11,7 +11,7 @@ Additionally the app provides some Amazon S3 integration. Exporting a
 database dump directly to S3 and listing the bucket contents is implemented.
 
 
-..note ::
+.. note ::
 
     I originally posted the views on djangosnippets a few month ago `here`_
     
@@ -38,7 +38,7 @@ url-space::
     )
 
 
-..note ::
+.. note ::
 
     Be sure to add this pattern before the django.contrib.admin pattern, 
     otherwise your urls will never be picked up, because they are catched by
