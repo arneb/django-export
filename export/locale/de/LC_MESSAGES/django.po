@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-19 09:27+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: views.py:35
+msgid "Export Database"
+msgstr "Datenbank exportieren"
+
+#: views.py:52
+msgid "Export Media Root"
+msgstr "Media Root exportieren"
+
+#: views.py:75
+#, python-format
+msgid "%(filename)s saved on Amazon S3"
+msgstr "%(filename)s auf Amazon S3 gespeichert"
+
+#: views.py:77
+#, python-format
+msgid "Upload failed with %(status)s"
+msgstr "Upload gescheitert mit %(status)s"
+
+#: views.py:80
+msgid "Export Database to S3"
+msgstr "Datenbank nach S3 exportieren"
+
+#: templates/export/export.html:5 templates/export/list_s3.html:7
+msgid "Home"
+msgstr ""
+
+#: templates/export/export.html:12
+msgid "Go"
+msgstr ""
+
+#: templates/export/list_s3.html:5 templates/export/list_s3.html.py:7
+msgid "List S3 Bucket"
+msgstr "S3 Bucket auflisten"
+
+#: templates/export/list_s3.html:11
+msgid "S3 Bucket Content"
+msgstr "S3 Bucket Inhalt"
+
+#: templates/export/list_s3.html:17
+msgid "Keyname"
+msgstr "Key-Name"
+
+#: templates/export/list_s3.html:18 templates/export/list_s3.html.py:25
+msgid "Download"
+msgstr "Download"

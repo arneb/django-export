@@ -1,0 +1,36 @@
+{% extends "admin/base_site.html" %}
+{% load adminmedia i18n %}
+{% block stylesheet %}{% admin_media_prefix %}css/changelists.css{% endblock %}
+{% block bodyclass %}change-list{% endblock %}
+{% block title %}{% trans "List S3 Bucket"%}{% endblock %}
+
+{% if not is_popup %}{% block breadcrumbs %}<div class="breadcrumbs"><a href="../../">{% trans "Home" %}</a>  &rsaquo; {% trans "List S3 Bucket" %}</div>{% endblock %}{% endif %}
+
+{% block content %}
+<div id="content-main">
+  <h1>{% trans "S3 Bucket Content" %}</h1>
+  {% if not s3support %}
+ 	<p>No Amazon S3 Support configured.</p>
+  {% endif %} 
+	<div id="content-main">
+		<div class="module" id="changelist">
+			<table cellspacing="0">
+			<thead>
+			<tr>
+			<th>{% trans "Keyname" %}</th>
+			<th>{% trans "Download" %}</th>
+			</tr>
+			</thead>
+			<tbody>
+				{% for object in object_list %} 
+					<tr class="{% cycle row1,row2 %}">
+						<th>{{ object.key }}</th>
+						<td><a href="{{ object.s3url }}">{% trans "Download" %}</a></td>
+					</tr>
+				{% endfor %} 
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
