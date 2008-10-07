@@ -11,7 +11,7 @@ Additionally the app provides some Amazon S3 integration. Exporting a
 database dump directly to S3 and listing the bucket contents is implemented.
 
 
-.. note:: I originally posted the views on djangosnippets a few month ago `here`_
+    I originally posted the views on djangosnippets a few month ago `here`_
     
 .. _`here` : http://www.djangosnippets.org/snippets/580/
 
@@ -35,10 +35,10 @@ url-space::
         url(r'^admin/export/', include('export.urls')),
     )
 
-
-.. note:: Be sure to add this pattern before the django.contrib.admin pattern, 
-otherwise your urls will never be picked up, because they are catched by
-the ``r'^admin/(.*)'`` pattern.
+ 
+    Be sure to add this pattern before the django.contrib.admin pattern, 
+    otherwise your urls will never be picked up, because they are catched by
+    the ``r'^admin/(.*)'`` pattern.
     
     
 Now add Links to the export views to your Admin Index Template, or anywhere 
