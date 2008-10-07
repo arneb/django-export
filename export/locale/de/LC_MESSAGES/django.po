@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-19 09:27+0200\n"
+"POT-Creation-Date: 2008-10-07 18:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,25 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: views.py:35
+#: views.py:40
 msgid "Export Database"
 msgstr "Datenbank exportieren"
 
-#: views.py:52
+#: views.py:57
 msgid "Export Media Root"
 msgstr "Media Root exportieren"
 
-#: views.py:75
+#: views.py:81
 #, python-format
 msgid "%(filename)s saved on Amazon S3"
 msgstr "%(filename)s auf Amazon S3 gespeichert"
 
-#: views.py:77
+#: views.py:83
 #, python-format
 msgid "Upload failed with %(status)s"
 msgstr "Upload gescheitert mit %(status)s"
 
-#: views.py:80
+#: views.py:86
 msgid "Export Database to S3"
 msgstr "Datenbank nach S3 exportieren"
 
@@ -42,7 +42,11 @@ msgstr "Datenbank nach S3 exportieren"
 msgid "Home"
 msgstr ""
 
-#: templates/export/export.html:12
+#: templates/export/export.html:11 templates/export/list_s3.html:13
+msgid "No Amazon S3 Support configured"
+msgstr "Keine Unterstützung für Amazon S3 konfiguriert."
+
+#: templates/export/export.html:15
 msgid "Go"
 msgstr ""
 
@@ -54,10 +58,10 @@ msgstr "S3 Bucket auflisten"
 msgid "S3 Bucket Content"
 msgstr "S3 Bucket Inhalt"
 
-#: templates/export/list_s3.html:17
+#: templates/export/list_s3.html:20
 msgid "Keyname"
 msgstr "Key-Name"
 
-#: templates/export/list_s3.html:18 templates/export/list_s3.html.py:25
+#: templates/export/list_s3.html:21 templates/export/list_s3.html.py:28
 msgid "Download"
 msgstr "Download"

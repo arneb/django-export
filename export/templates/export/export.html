@@ -8,7 +8,7 @@
 <div id="content-main">
   <h1>{{ what }}:</h1>
   {% if s3 and not s3support %} 
-	<p>No Amazon S3 Support configured</p>
+	<p>{% trans "No Amazon S3 Support configured" %}</p>
   {% else %} 
 	<form name="export" action="" method="post" >
 		<input type="hidden" name="exportdb" value="true" />
