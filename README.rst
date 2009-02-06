@@ -62,7 +62,18 @@ There are currently two **optional** settings::
   SQLITE3DUMP_CMD: The command used to dump a sqlite2 database.
                    Defaults to: 'echo ".dump" | /usr/bin/sqlite3 %s | bzip2 -c'
 
-  
+  DISABLE_STREAMING: Normally an exported file would get streamed to the client
+                     in small chunks. If you are using ConditionalGetMiddleware
+                     or GZipMiddleware, this will break the streaming and
+                     results in zero-byte-size files. Set this option to
+                     ``True`` will disable streaming.
+
+                     Keep in mind that, in this case, the exported file
+                     will held entirely in RAM until it's fully transmitted
+                     to the client. Defaults to: ``False``
+
+                     See http://code.djangoproject.com/ticket/7581 for details.
+
 To enable Amazon S3 support there are two steps:
 
     * first install the S3 python library (can be found on the amazon website)

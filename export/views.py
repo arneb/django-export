@@ -16,14 +16,14 @@ except ImportError:
 # default dump commands, you can overwrite these in your settings.
 MYSQLDUMP_CMD = getattr(settings, 'MYSQLDUMP_CMD', '/usr/bin/mysqldump -h %s --opt --compact --skip-add-locks -u %s -p%s %s | bzip2 -c')
 SQLITE3DUMP_CMD = getattr(settings, 'SQLITE3DUMP_CMD', 'echo ".dump" | /usr/bin/sqlite3 %s | bzip2 -c')
-
+DISABLE_STREAMING = getattr(settings, 'DISABLE_STREAMING', False)
 
 
 @staff_member_required
 def export_database(request):
     """
     Dump the database directly to the browser
-    
+
     """
     if request.method == 'POST':
         if settings.DATABASE_ENGINE == 'mysql':
@@ -34,6 +34,8 @@ def export_database(request):
             raise ImproperlyConfigured, "Sorry, django-export only supports mysql and sqlite3 database backends."
         stdin, stdout = os.popen2(cmd)
         stdin.close()
+        if DISABLE_STREAMING:
+            stdout = stdout.read()
         response = HttpResponse(stdout, mimetype="application/octet-stream")
         response['Content-Disposition'] = 'attachment; filename=%s' % date.today().__str__()+'_db.sql.bz2'
         return response
@@ -42,28 +44,30 @@ def export_database(request):
 
 
 
-@staff_member_required        
+@staff_member_required
 def export_media(request):
     """
     Tar the MEDIA_ROOT and send it directly to the browser
-    
+
     """
     if request.method == 'POST':
         stdin, stdout = os.popen2('tar -cf - %s' % settings.MEDIA_ROOT)
         stdin.close()
+        if DISABLE_STREAMING:
+            stdout = stdout.read()
         response = HttpResponse(stdout, mimetype="application/octet-stream")
         response['Content-Disposition'] = 'attachment; filename=%s' % date.today().__str__()+'_media.tar'
         return response
     return direct_to_template(request, 'export/export.html', {'what': _(u'Export Media Root')})
-        
-        
-        
-        
+
+
+
+
 @staff_member_required
 def export_to_s3(request):
     """
     Dump the database and upload the dump to Amazon S3
-    
+
     """
     if request.method == 'POST':
         if settings.DATABASE_ENGINE == 'mysql':
@@ -84,15 +88,15 @@ def export_to_s3(request):
         stdout.close()
         return HttpResponseRedirect('/admin/')
     return direct_to_template(request, 'export/export.html', {'what': _(u'Export Database to S3'), 's3support': (S3 is not None), 's3': True})
-        
-        
-        
-        
+
+
+
+
 @staff_member_required
 def list_s3(request):
     """
     List Amazon S3 bucket contents
-    
+
     """
     if S3 is not None:
         conn = S3.AWSAuthConnection(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
@@ -106,6 +110,6 @@ def list_s3(request):
         return direct_to_template(request, 'export/list_s3.html', {'object_list': entries, 's3support': True})
     else:
         return direct_to_template(request, 'export/list_s3.html', {'object_list': [], 's3support': False})
-        
+
 
 
