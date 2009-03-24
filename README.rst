@@ -31,7 +31,7 @@ Then add ``export`` to your INSTALLED_APPS setting::
 Then hook the app into your url-conf, for example diretly under the admin
 url-space::
 
-    urlpatterns += pattern('',
+    urlpatterns += patterns('',
         url(r'^admin/export/', include('export.urls')),
     )
 
