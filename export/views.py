@@ -112,4 +112,11 @@ def list_s3(request):
         return direct_to_template(request, 'export/list_s3.html', {'object_list': [], 's3support': False})
 
 
-
+@staff_member_required
+def export_index(request):
+    """
+    List all available export views.
+    
+    """
+    return direct_to_template(request, 'export/index.html', {'s3support': (S3 is not None),})
+    

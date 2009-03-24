@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+{% load adminmedia i18n %}
+{% block title %}{% trans "Export" %}{% endblock %}
+
+{% if not is_popup %}{% block breadcrumbs %}<div class="breadcrumbs"><a href="../">{% trans "Home" %}</a>  &rsaquo; Export</div>{% endblock %}{% endif %}
+
+{% block content %}
+<div id="content-main">
+  <h1>{% trans "Export" %}</h1>
+  <ul>
+	<li><a href="{% url export_database %}">{% trans "Export Database" %}</a></li>
+	<li><a href="{% url export_mediaroot %}">{% trans "Export Media Root" %}</a></li>
+	{% if s3support %}
+	<li><a href="{% url export_database_s3 %}">{% trans "Export Database to S3" %}</a></li>
+	<li><a href="{% url export_list_s3 %}">{% trans "List S3 Bucket"%}</a></li> 
+	{% endif %} 
+  </ul>
+</div>
+{% endblock %}

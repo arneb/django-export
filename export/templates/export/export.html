@@ -2,11 +2,11 @@
 {% load adminmedia i18n %}
 {% block title %}{{ what }}{% endblock %}
 
-{% if not is_popup %}{% block breadcrumbs %}<div class="breadcrumbs"><a href="../../">{% trans "Home" %}</a>  &rsaquo; {{ what }}</div>{% endblock %}{% endif %}
+{% if not is_popup %}{% block breadcrumbs %}<div class="breadcrumbs"><a href="../../">{% trans "Home" %}</a>  &rsaquo; <a href="../">{% trans "Export" %}</a> &rsaquo; {{ what }}</div>{% endblock %}{% endif %}
 
 {% block content %}
 <div id="content-main">
-  <h1>{{ what }}:</h1>
+  <h1>{{ what }}</h1>
   {% if s3 and not s3support %} 
 	<p>{% trans "No Amazon S3 Support configured" %}</p>
   {% else %} 
